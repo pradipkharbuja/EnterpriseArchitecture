@@ -9,7 +9,7 @@
 			<property name="hibernate.connection.url"
 				value="jdbc:mysql://localhost/cs544_lab3?createDatabaseIfNotExist=true" />
 			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="root" />
+			<property name="hibernate.connection.password" value="" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="true" />

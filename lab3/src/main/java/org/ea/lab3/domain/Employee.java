@@ -2,6 +2,7 @@ package org.ea.lab3.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -11,6 +12,7 @@ public class Employee {
 	private String name;
 	
 	@OneToOne
+	@JoinColumn(name="dept_id")
 	private Department department;
 
 	public int getEmployeeNumber() {
