@@ -1,1 +1,1 @@
-# enterprise-architecture EA (CS 544)
+# Enterprise Architecture (EA CS544)
