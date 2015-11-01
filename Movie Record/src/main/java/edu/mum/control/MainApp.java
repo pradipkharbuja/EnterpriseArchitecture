@@ -35,20 +35,17 @@ public class MainApp {
 			listMoviesAndArtist();
 			listMovieByCriteria();
 
-			// entityTransaction.commit();
+			entityTransaction.commit();
 		} catch (Exception ex) {
 			if (entityTransaction != null && entityTransaction.isActive()) {
-				// entityTransaction.rollback();
+				entityTransaction.rollback();
 			}
 			ex.printStackTrace();
 		} finally {
-			entityTransaction.commit();
 			if (entityManager != null) {
 				entityManager.close();
 			}
-			if (entityManagerFactory != null) {
-				entityManagerFactory.close();
-			}
+			entityManagerFactory.close();
 		}
 
 	}
@@ -87,7 +84,7 @@ public class MainApp {
 		Query query = entityManager.createQuery("FROM Movie WHERE rating = :rating AND year = :year", Movie.class);
 		query.setParameter("rating", 4.0);
 		query.setParameter("year", 2007);
-		
+
 		List<Movie> movies = query.getResultList();
 
 		System.out.println("List all Movies and Artist searched by rating and year: ");
