@@ -10,9 +10,12 @@ public class App {
 
 		IBookService bookService = context.getBean("bookService", IBookService.class);
 
-		//bookService.buy(new Book("123433267", "Harry Potter and the Order of the Phoenix", "J.K. Rowling"));
-		//bookService.buy(new Book("888832678", "Harry Potter and the Sorcerer's Stone", "J.K. Rowling"));
-		//bookService.buy(new Book("999923156", "Harry Potter and the Goblet of Fire", "J.K. Rowling"));
-
+		Book book1 = context.getBean("book1", Book.class);
+		Book book2 = context.getBean("book2", Book.class);
+		Book book3 = context.getBean("book3", Book.class);
+		
+		bookService.buy(book1);
+		bookService.buy(book2);
+		bookService.buy(book3);
 	}
 }

@@ -5,11 +5,30 @@
 
 	<bean id="bookService" class="cs544.exercise6_2.BookService">
 		<constructor-arg>
-		<list>
-			<bean ref="amzon"></bean>
-		</list>		
+			<list>
+				<bean id="amazon" class="cs544.exercise6_2.Amazon"></bean>
+				<bean id="barnesandnoble" class="cs544.exercise6_2.BarnesAndNoble"></bean>
+				<bean id="ebooks" class="cs544.exercise6_2.EBooks"></bean>
+				<bean id="borders" class="cs544.exercise6_2.Borders"></bean>
+			</list>
 		</constructor-arg>
 	</bean>
-	<bean id="amazon" class="cs544.exercise6_2.Amazon"></bean>
 
+	<bean id="book1" class="cs544.exercise6_2.Book">
+		<constructor-arg value="123433267" />
+		<constructor-arg value="Harry Potter and the Order of the Phoenix" />
+		<constructor-arg value="J.K. Rowling" />
+	</bean>
+
+	<bean id="book2" class="cs544.exercise6_2.Book">
+		<constructor-arg value="888832678" />
+		<constructor-arg value="Harry Potter and the Sorcerer's Stone" />
+		<constructor-arg value="J.K. Rowling" />
+	</bean>
+
+	<bean id="book3" class="cs544.exercise6_2.Book">
+		<constructor-arg value="Harry Potter and the Goblet of Fire" />
+		<constructor-arg value="J.K. Rowling" />
+		<constructor-arg value="999923156" index="0" />
+	</bean>
 </beans>
