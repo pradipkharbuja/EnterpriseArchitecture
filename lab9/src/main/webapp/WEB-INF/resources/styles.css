@@ -1,0 +1,13 @@
+* {
+	font-family: Tahoma;
+}
+
+.error {
+	color: red;
+}
+
+.errorBlock {
+	border: 2px solid red;
+	padding: 10px;
+	background-color: pink;
+}
