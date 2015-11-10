@@ -40,6 +40,10 @@ public class Artist {
 	public Artist() {
 		super();
 	}
+	
+	public Artist(String name){
+		this.name = name;
+	}
 
 	public Artist(String name, String dateOfBirth, String placeOfBirth) {
 		super();

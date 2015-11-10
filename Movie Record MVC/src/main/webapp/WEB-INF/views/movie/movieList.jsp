@@ -24,9 +24,9 @@
 				<td>${movie.name}</td>
 				<td>${movie.year}</td>
 				<td>${movie.rating}</td>
-				<td>${movie.rating}</td>
-				<td>${movie.rating}</td>
-				<td>${movie.rating}</td>
+				<td>${movie.directors}</td>
+				<td>${movie.artists}</td>
+				<td>${movie.genres}</td>
 				<td><a href="movies/update/${movie.movieId}">edit</a></td>
 				<td><a onClick="return confirm('Are you sure to delete?');"
 					href="movies/delete/${movie.movieId}">delete</a></td>
