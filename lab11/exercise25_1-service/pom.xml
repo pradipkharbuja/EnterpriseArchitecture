@@ -13,13 +13,15 @@
 	<properties>
 		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>cs544</groupId>
 			<artifactId>exercise25_1-client</artifactId>
-             <version>1.0-SNAPSHOT</version>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>javax</groupId>
@@ -32,12 +34,12 @@
 			<artifactId>spring-oxm</artifactId>
 			<version>4.0.2.RELEASE</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>4.0.2.RELEASE</version>
-		</dependency>	
+		</dependency>
 	</dependencies>
 
 	<build>

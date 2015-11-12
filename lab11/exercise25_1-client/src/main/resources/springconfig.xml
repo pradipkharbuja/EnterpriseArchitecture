@@ -33,4 +33,8 @@
 		<property name="contextPath" value="cs544.exercise25_1.generated.shoppingList:cs544.exercise25_1.generated.customer"/>
 	</bean>	
 	
+	<bean id="customerServiceProxy" class="cs544.exercise25_1.service.CustomerServiceProxy">
+		<property name="restTemplate" ref="restTemplate"></property>
+	</bean>
+	
 </beans>

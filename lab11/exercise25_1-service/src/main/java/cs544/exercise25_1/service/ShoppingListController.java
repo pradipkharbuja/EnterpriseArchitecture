@@ -14,17 +14,22 @@ import org.springframework.web.servlet.view.RedirectView;
 public class ShoppingListController {
 
 	private IShoppingListService shoppingListService;
-	
+
 	public void setShoppingListService(IShoppingListService shoppingListService) {
 		this.shoppingListService = shoppingListService;
 	}
 
+	@RequestMapping(value = "/")
+	public String index() {
+		return "index.jsp";
+	}
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
-		
+
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("marshalview");
-		
+
 		mav.addObject("list", shoppingListService.getList());
 		return mav;
 	}
@@ -38,10 +43,10 @@ public class ShoppingListController {
 
 	@RequestMapping(value = "/item/{product}*", method = RequestMethod.GET)
 	public ModelAndView item(@PathVariable("product") String product) {
-		
+
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("item");
-		
+
 		Item item = shoppingListService.getItem(product);
 		if (item != null) {
 			mav.addObject("item", item);
@@ -58,7 +63,7 @@ public class ShoppingListController {
 
 	@RequestMapping(value = "/item/{product}", method = RequestMethod.DELETE)
 	public RedirectView deleteItem(@PathVariable("product") String product) {
-		
+
 		shoppingListService.removeFromList(product);
 		return new RedirectView("../list");
 	}
