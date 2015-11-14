@@ -1,0 +1,39 @@
+* {
+	font-size: 12px;
+	font-family: Tahoma;
+}
+
+body {
+	width: 80%;
+	margin: 0 auto;
+}
+
+header {
+	margin: 10px 0;
+}
+
+footer {
+	margin: 0px auto;
+	width: 250px;
+	padding: 50px;
+}
+
+#spacer {
+	margin: 10px;
+	clear: both;
+}
+
+.animal {
+	float: left;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	width: 150px;
+}
+
+.animal-image {
+	width: 110px;
+}
+
+.city {
+	margin: 5px 0;
+}
