@@ -12,7 +12,7 @@ public class HomeController {
 	@Autowired
 	private PetService petService;
 
-	@RequestMapping("/")
+	@RequestMapping("/home")
 	public String index(Model model) {
 		model.addAttribute("listPets", petService.listPets());
 

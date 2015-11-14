@@ -2,6 +2,7 @@ package org.pradip.pet.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.pradip.pet.model.Owner;
@@ -13,9 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class OwnerDAOImpl implements OwnerDAO {
 
 	private SessionFactory sessionFactory;
-	
+
 	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;		
+		this.sessionFactory = sessionFactory;
 	}
 
 	@Override
@@ -36,4 +37,18 @@ public class OwnerDAOImpl implements OwnerDAO {
 		return null;
 	}
 
+	@Override
+	public boolean isValidUser(Owner owner) {
+		Session session = this.sessionFactory.getCurrentSession();
+
+		String hql = "from Owner WHERE userName = :userName AND password = :password";
+		Query query = session.createQuery(hql);
+		query.setString("userName", owner.getUserName());
+		query.setString("password", owner.getPassword());
+
+		List<Owner> o = query.list();
+		System.out.println("Size: " + o.size());
+		
+		return (! o.isEmpty());
+	}
 }

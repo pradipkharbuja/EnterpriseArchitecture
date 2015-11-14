@@ -69,20 +69,6 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<!-- Custom Beans -->
-	<bean id="ownerDAO" class="org.pradip.pet.dao.OwnerDAOImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
+	<import resource="custom-beans.xml" />
 
-	<bean id="ownerService" class="org.pradip.pet.service.OwnerServiceImpl">
-		<property name="ownerDAO" ref="ownerDAO" />
-	</bean>
-
-	<bean id="petDAO" class="org.pradip.pet.dao.PetDAOImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<bean id="petService" class="org.pradip.pet.service.PetServiceImpl">
-		<property name="petDAO" ref="petDAO" />
-	</bean>
 </beans>

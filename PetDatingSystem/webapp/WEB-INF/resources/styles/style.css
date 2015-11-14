@@ -18,9 +18,19 @@ footer {
 	padding: 50px;
 }
 
+/* Login Page Starts Here*/
+#loginForm {
+	margin: 50px auto;
+	width: 300px;
+}
+/* Login Page Style Ends Here*/
 #spacer {
 	margin: 10px;
 	clear: both;
+}
+
+.error {
+	color: red;
 }
 
 .animal {

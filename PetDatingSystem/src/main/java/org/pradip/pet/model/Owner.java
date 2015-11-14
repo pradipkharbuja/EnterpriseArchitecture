@@ -3,6 +3,7 @@ package org.pradip.pet.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,8 @@ public class Owner {
 	private int ownerId;
 
 	private String ownerName;
+
+	@Column(unique = true)
 	private String userName;
 	private String password;
 	private String city;

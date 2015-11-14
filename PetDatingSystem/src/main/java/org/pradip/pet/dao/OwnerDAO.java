@@ -11,4 +11,6 @@ public interface OwnerDAO {
 	public void udpateOwner(Owner owner);
 
 	public List<Owner> listOwners();
+	
+	public boolean isValidUser(Owner owner);
 }
