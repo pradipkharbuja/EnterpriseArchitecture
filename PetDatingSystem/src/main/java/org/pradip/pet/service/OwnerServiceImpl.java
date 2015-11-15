@@ -29,8 +29,13 @@ public class OwnerServiceImpl implements OwnerService {
 	}
 
 	@Override
-	public boolean isValidUser(Owner owner) {		
-		return this.ownerDAO.isValidUser(owner);
+	public Owner getOwner(Owner owner) {
+		return this.ownerDAO.getOwner(owner);
+	}
+
+	@Override
+	public boolean isValidOwner(Owner owner) {
+		return this.ownerDAO.isValidOwner(owner);
 	}
 
 }

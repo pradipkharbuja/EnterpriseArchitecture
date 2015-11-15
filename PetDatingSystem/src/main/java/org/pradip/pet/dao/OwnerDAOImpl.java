@@ -38,7 +38,7 @@ public class OwnerDAOImpl implements OwnerDAO {
 	}
 
 	@Override
-	public boolean isValidUser(Owner owner) {
+	public Owner getOwner(Owner owner) {
 		Session session = this.sessionFactory.getCurrentSession();
 
 		String hql = "from Owner WHERE userName = :userName AND password = :password";
@@ -47,8 +47,37 @@ public class OwnerDAOImpl implements OwnerDAO {
 		query.setString("password", owner.getPassword());
 
 		List<Owner> o = query.list();
-		System.out.println("Size: " + o.size());
-		
-		return (! o.isEmpty());
+
+		if (o.isEmpty()) {
+			return new Owner();
+		} else {
+			return o.get(0);
+		}
+	}
+
+	@Override
+	public boolean isValidOwner(Owner owner) {
+		if (owner.getOwnerId() <= 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	@Override
+	public Owner getOwnerById(int ownerId) {
+		Session session = this.sessionFactory.getCurrentSession();
+
+		String hql = "from Owner WHERE ownerId = :ownerId";
+		Query query = session.createQuery(hql);
+		query.setParameter("ownerId", ownerId);
+
+		List<Owner> o = query.list();
+
+		if (o.isEmpty()) {
+			return new Owner();
+		} else {
+			return o.get(0);
+		}
 	}
 }

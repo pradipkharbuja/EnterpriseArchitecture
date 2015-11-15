@@ -10,12 +10,16 @@
 				<h1>
 					<a href="pet/${pet.petId}">${pet.petName}</a>
 				</h1>
-				<img class="animal-image"
-					src="resources/images/image-unavailable.jpg">
+				<img class="animal-image" src="image/${pet.petId}">
 				<div class="city">Animal Type : ${pet.breed.petType.petType}</div>
 				<div class="city">Breed : ${pet.breed.breedName}</div>
 				<div class="city">City : ${pet.owner.city}</div>
-				<button class="btn-contact" type="submit">Contact Owner</button>
+				<c:if test="${pet.owner.ownerId != sessionScope.ownerId}">
+					<button class="btn-contact" type="submit">Contact Owner</button>
+				</c:if>
+				<c:if test="${pet.owner.ownerId == sessionScope.ownerId}">
+					<a href="pets/update/${pet.petId}">Update</a>
+				</c:if>
 			</form>
 		</div>
 	</c:forEach>

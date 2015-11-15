@@ -12,5 +12,9 @@ public interface OwnerDAO {
 
 	public List<Owner> listOwners();
 	
-	public boolean isValidUser(Owner owner);
+	public Owner getOwner(Owner owner);
+	
+	public boolean isValidOwner(Owner owner);
+	
+	public Owner getOwnerById(int id);
 }

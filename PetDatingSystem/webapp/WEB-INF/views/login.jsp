@@ -4,8 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Pet Dating System - Login Page</title>
-<link rel="stylesheet" href="resources/styles/style.css" />
 <base href="${pageContext.request.contextPath}/" />
+<link rel="stylesheet" href="resources/styles/style.css" />
 </head>
 <body>
 
@@ -16,17 +16,18 @@
 			<table>
 				<tr>
 					<td>User Name:</td>
-					<td><form:input path="userName" /></td>					
+					<td><form:input path="userName" value="pradip" /></td>					
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td><form:password path="password" /></td>					
+					<td><form:password path="password" value="kharbuja"/></td>					
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="Submit" /></td>
 				</tr>
 			</table>
 		</form:form>
+		<div class="spacer"><a href="register">New Owner? Register Here!</a></div>
 	</div>
 
 	<jsp:include page="footer.jsp" />

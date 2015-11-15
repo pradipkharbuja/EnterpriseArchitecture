@@ -69,6 +69,8 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+	<import resource="aspects.xml" />
+
 	<import resource="custom-beans.xml" />
 
 </beans>

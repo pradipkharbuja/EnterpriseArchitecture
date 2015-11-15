@@ -23,4 +23,7 @@
 	<bean id="petService" class="org.pradip.pet.service.PetServiceImpl">
 		<property name="petDAO" ref="petDAO" />
 	</bean>
+
+	<bean id="loginService" class="org.pradip.pet.service.LoginServiceImpl" />
+
 </beans>

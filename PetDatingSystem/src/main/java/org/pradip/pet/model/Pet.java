@@ -83,4 +83,10 @@ public class Pet {
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Pet Id: " + getPetId() + " Pet Name: " + getPetName();
+	}
 }
