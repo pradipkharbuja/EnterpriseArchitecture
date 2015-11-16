@@ -25,7 +25,7 @@ public class HomeController {
 	public String home(Model model, HttpServletResponse response) {
 		Owner owner = loginService.getCurrentOwner();
 
-		model.addAttribute("listPets", petService.listOthersPets(owner));
+		model.addAttribute("getAllPets", petService.getOthersPets(owner));
 		return "pet-list";
 	}
 }

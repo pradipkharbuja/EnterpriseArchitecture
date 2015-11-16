@@ -7,22 +7,35 @@
                     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
                     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<!-- Custom Beans -->
+	<!-- DAO Beans -->
 	<bean id="ownerDAO" class="org.pradip.pet.dao.OwnerDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<bean id="ownerService" class="org.pradip.pet.service.OwnerServiceImpl">
-		<property name="ownerDAO" ref="ownerDAO" />
 	</bean>
 
 	<bean id="petDAO" class="org.pradip.pet.dao.PetDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+	<bean id="petTypeDAO" class="org.pradip.pet.dao.PetTypeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="breedDAO" class="org.pradip.pet.dao.BreedDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- Service Beans -->
+	<bean id="ownerService" class="org.pradip.pet.service.OwnerServiceImpl">
+		<property name="ownerDAO" ref="ownerDAO" />
+	</bean>
+
 	<bean id="petService" class="org.pradip.pet.service.PetServiceImpl">
 		<property name="petDAO" ref="petDAO" />
 	</bean>
+
+	<bean id="petTypeService" class="org.pradip.pet.service.PetTypeServiceImpl" />
+
+	<bean id="breedService" class="org.pradip.pet.service.BreedServiceImpl" />
 
 	<bean id="loginService" class="org.pradip.pet.service.LoginServiceImpl" />
 

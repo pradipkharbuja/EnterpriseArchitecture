@@ -28,6 +28,7 @@
 			</table>
 		</form:form>
 		<div class="spacer"><a href="register">New Owner? Register Here!</a></div>
+		<div class="spacer"><a href="rss">View RSS Feed</a></div>
 	</div>
 
 	<jsp:include page="footer.jsp" />

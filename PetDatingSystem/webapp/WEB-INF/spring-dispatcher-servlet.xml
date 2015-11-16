@@ -11,6 +11,8 @@
 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
 
 	<context:component-scan base-package="org.pradip.pet.controller" />
+	
+	<context:component-scan base-package="org.pradip.pet.webservice" />
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />

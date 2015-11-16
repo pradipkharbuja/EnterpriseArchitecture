@@ -30,7 +30,7 @@ public class LoginController {
 
 		if (ownerService.isValidOwner(newOwner)) {
 			loginService.doLogin(newOwner);
-			return "redirect:/home";
+			return "redirect:/";
 		} else {
 			model.addAttribute("loginError", "Invalid Username / Password!");
 			return "login";

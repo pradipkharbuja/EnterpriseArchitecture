@@ -4,7 +4,7 @@
 }
 
 body {
-	width: 80%;
+	width: 900px;
 	margin: 0 auto;
 }
 
@@ -28,7 +28,7 @@ a:active {
 
 #loginForm, #registerForm {
 	margin: 50px auto;
-	width: 300px;
+	width: 350px;
 }
 
 .spacer {

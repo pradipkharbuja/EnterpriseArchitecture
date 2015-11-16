@@ -6,11 +6,13 @@ import org.pradip.pet.model.Owner;
 import org.pradip.pet.model.Pet;
 
 public interface PetService {
-	public List<Pet> listPets();
+	public List<Pet> getAllPets();
 
-	public List<Pet> listOthersPets(Owner owner);
+	public List<Pet> getOthersPets(Owner owner);
 
-	public List<Pet> listMyPets(Owner owner);
+	public List<Pet> getMyPets(Owner owner);
 
 	public Pet getPetById(int petId);
+	
+	public void deletePet(Pet pet);
 }

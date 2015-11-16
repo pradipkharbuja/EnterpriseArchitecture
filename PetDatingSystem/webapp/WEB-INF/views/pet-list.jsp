@@ -3,7 +3,7 @@
 <jsp:include page="header.jsp" />
 
 <div id="animal-list">
-	<c:forEach items="${listPets}" var="pet">
+	<c:forEach items="${getAllPets}" var="pet">
 		<div class="animal">
 			<form method="post" action="">
 				<input type="hidden" name="petId" value="${pet.petId}">
@@ -18,7 +18,9 @@
 					<button class="btn-contact" type="submit">Contact Owner</button>
 				</c:if>
 				<c:if test="${pet.owner.ownerId == sessionScope.ownerId}">
-					<a href="pets/update/${pet.petId}">Update</a>
+					<a href="pets/update/${pet.petId}">Update</a> &nbsp;
+					<a onClick="return confirm('Are you sure to delete?')"
+						href="pets/delete/${pet.petId}">Delete</a>
 				</c:if>
 			</form>
 		</div>

@@ -21,14 +21,14 @@ public class PetDAOImpl implements PetDAO {
 	}
 
 	@Override
-	public List<Pet> listPets() {
+	public List<Pet> getAllPets() {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Pet> petsList = session.createQuery("from Pet").list();
 		return petsList;
 	}
 
 	@Override
-	public List<Pet> listOthersPets(Owner owner) {
+	public List<Pet> getOthersPets(Owner owner) {
 		Session session = this.sessionFactory.getCurrentSession();
 		String hql = "from Pet WHERE owner.ownerId <> :ownerId AND owner.city = :city";
 		Query query = session.createQuery(hql);
@@ -40,7 +40,7 @@ public class PetDAOImpl implements PetDAO {
 	}
 
 	@Override
-	public List<Pet> listMyPets(Owner owner) {
+	public List<Pet> getMyPets(Owner owner) {
 		Session session = this.sessionFactory.getCurrentSession();
 		String hql = "from Pet WHERE ownerId = :ownerId";
 		Query query = session.createQuery(hql);
@@ -62,6 +62,12 @@ public class PetDAOImpl implements PetDAO {
 			return petsList.get(0);
 		}
 		return new Pet();
+	}
+
+	@Override
+	public void deletePet(Pet pet) {		
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(pet);
 	}
 
 }

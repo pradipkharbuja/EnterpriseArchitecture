@@ -25,7 +25,7 @@ public class LoginAspect {
 			+ "|| execution(public * org.pradip.pet.controller.login.RegisterController.*(..))")
 	public Object isAlreadyLoggedIn(ProceedingJoinPoint joinPoint) throws Throwable {
 		if (loginService.isLoggedIn()) {
-			return "redirect:/home";
+			return "redirect:/";
 		} else {
 			return joinPoint.proceed();			
 		}

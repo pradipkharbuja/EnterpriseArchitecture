@@ -15,23 +15,28 @@ public class PetServiceImpl implements PetService {
 	}
 
 	@Override
-	public List<Pet> listPets() {
-		return petDAO.listPets();
+	public List<Pet> getAllPets() {
+		return petDAO.getAllPets();
 	}
 
 	@Override
-	public List<Pet> listOthersPets(Owner owner) {
-		return petDAO.listOthersPets(owner);
+	public List<Pet> getOthersPets(Owner owner) {
+		return petDAO.getOthersPets(owner);
 	}
 
 	@Override
-	public List<Pet> listMyPets(Owner owner) {
-		return petDAO.listMyPets(owner);
+	public List<Pet> getMyPets(Owner owner) {
+		return petDAO.getMyPets(owner);
 	}
 
 	@Override
 	public Pet getPetById(int petId) {		
 		return petDAO.getPetById(petId);
+	}
+
+	@Override
+	public void deletePet(Pet pet) {		
+		petDAO.deletePet(pet);
 	}
 
 }
