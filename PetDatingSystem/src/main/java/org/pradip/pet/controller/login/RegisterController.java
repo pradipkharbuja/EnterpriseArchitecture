@@ -6,7 +6,6 @@ import org.pradip.pet.model.Owner;
 import org.pradip.pet.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +24,7 @@ public class RegisterController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPost(Model model, @Valid Owner owner, BindingResult result) {
+	public String registerPost(@Valid Owner owner, BindingResult result) {
 		if (result.hasErrors()) {
 			return "register";
 		} else {

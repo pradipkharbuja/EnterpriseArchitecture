@@ -30,7 +30,6 @@ public class ImageController {
 	public void index(@PathVariable int petId, HttpServletResponse response) throws IOException, URISyntaxException {
 
 		Pet pet = petService.getPetById(petId);
-		System.out.println(pet);
 
 		byte[] image = pet.getPetPhoto();
 
