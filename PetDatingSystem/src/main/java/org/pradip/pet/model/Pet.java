@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Pet {
@@ -21,12 +24,14 @@ public class Pet {
 
 	@OneToOne
 	@JoinColumn(name = "breedId")
+	//@NotNull(message = "Please select the breed.")
 	private Breed breed;
 
 	@OneToOne
 	@JoinColumn(name = "ownerId")
 	private Owner owner;
 
+	@NotEmpty(message = "Please enter the pet name.")
 	private String petName;
 
 	@Lob

@@ -5,7 +5,7 @@
 
 <div id="registerForm">
 	<h1>Add / Update My Pet</h1>
-	<form:form commandName="pet" action="" method="post" enctype="multipart/form-data">
+	<form:form commandName="pet" action="" method="post">
 		<div class="success">${successMsg}</div>
 		<div class="error">
 			<form:errors path="*" />

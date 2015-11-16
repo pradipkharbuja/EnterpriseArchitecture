@@ -10,6 +10,6 @@ public class IndexController {
 
 	@RequestMapping("/")
 	public String index() {
-		return "redirect:/pets";
+		return "redirect:/pets/add";
 	}
 }

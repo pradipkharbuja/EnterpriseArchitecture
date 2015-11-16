@@ -61,13 +61,20 @@ public class PetController {
 			RedirectAttributes redirectAttributes) {
 		model.addAttribute("petTypes", petTypeService.getAllPetTypes());
 		model.addAttribute("breeds", breedService.getAllBreeds());
-		return "pet-add-update";
+		if (result.hasErrors()) {
+			System.out.println("If");
+			return "pet-add-update";
+		} else {
+			System.out.println("Else");
+			return "pet-add-update";
+		}
+
 	}
 
 	@RequestMapping(value = "/delete/{petId}")
 	public String deletePet(@PathVariable int petId, @ModelAttribute Pet pet, HttpServletRequest request) {
-		pet.setPetId(petId);		
-		//petService.deletePet(pet);
+		pet.setPetId(petId);
+		// petService.deletePet(pet);
 		return "redirect:" + request.getHeader("Referer");
 	}
 }
