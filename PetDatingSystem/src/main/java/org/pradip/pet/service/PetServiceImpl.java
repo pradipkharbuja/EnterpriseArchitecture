@@ -30,13 +30,23 @@ public class PetServiceImpl implements PetService {
 	}
 
 	@Override
-	public Pet getPetById(int petId) {		
+	public Pet getPetById(int petId) {
 		return petDAO.getPetById(petId);
 	}
 
 	@Override
-	public void deletePet(Pet pet) {		
+	public void deletePet(Pet pet) {
 		petDAO.deletePet(pet);
+	}
+
+	@Override
+	public void addPet(Pet pet) {
+		petDAO.addPet(pet);
+	}
+
+	@Override
+	public void updatePet(Pet pet) {		
+		petDAO.updatePet(pet);
 	}
 
 }

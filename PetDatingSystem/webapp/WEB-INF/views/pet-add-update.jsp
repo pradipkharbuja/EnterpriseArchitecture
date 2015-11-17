@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<td>Select Breed:</td>
-				<td><select id="breed" name="breed">
+				<td><select id="breed" name="breed.breedId">
 						<c:forEach var="breed" items="${breeds}">
 							<option value="${breed.breedId}" rel="${breed.petType.petTypeId}">${breed.breedName}</option>
 						</c:forEach>
@@ -35,11 +35,26 @@
 				<td>Upload a Photo:</td>
 				<td><input type="file" name="petPhoto">
 			</tr>
+			<c:if test="${pet.petId != 0 }">
+				<tr>
+					<td colspan="2"><img alt="${pet.petName}"
+						src="image/${pet.petId}" class="animal-image"></td>
+				</tr>
+			</c:if>
 			<tr>
 				<td colspan="2"><input type="submit" value="Submit" /></td>
 			</tr>
 		</table>
 	</form:form>
 </div>
+
+<c:if test="${pet.petId != 0 }">
+	<script>
+		$(document).ready(function() {
+			$('#petType').val("${pet.breed.petType.petTypeId}").change();
+			$('#breed').val("${pet.breed.breedId}");
+		});
+	</script>
+</c:if>
 
 <jsp:include page="footer.jsp" />

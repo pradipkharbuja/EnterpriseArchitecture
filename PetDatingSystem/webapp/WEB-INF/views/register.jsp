@@ -41,6 +41,11 @@
 					<td><form:checkbox path="instantEmail" /></td>
 				</tr>
 				<tr>
+					<td colspan="2">When other owner wants to contact you, if you
+						check the Instant Email, you get email instantly otherwise you get
+						at the end of the day.</td>
+				</tr>
+				<tr>
 					<td colspan="2"><input type="submit" value="Submit" /></td>
 				</tr>
 			</table>

@@ -3,9 +3,11 @@ package org.pradip.pet.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.pradip.pet.model.Comment;
 import org.pradip.pet.model.Owner;
 import org.pradip.pet.model.Pet;
 import org.pradip.pet.service.BreedService;
+import org.pradip.pet.service.CommentService;
 import org.pradip.pet.service.LoginService;
 import org.pradip.pet.service.PetService;
 import org.pradip.pet.service.PetTypeService;
@@ -35,6 +37,9 @@ public class PetController {
 	@Autowired
 	private BreedService breedService;
 
+	@Autowired
+	private CommentService commentService;
+
 	@RequestMapping("")
 	public String myPets(Model model) {
 		Owner owner = loginService.getCurrentOwner();
@@ -62,13 +67,54 @@ public class PetController {
 		model.addAttribute("petTypes", petTypeService.getAllPetTypes());
 		model.addAttribute("breeds", breedService.getAllBreeds());
 		if (result.hasErrors()) {
-			System.out.println("If");
 			return "pet-add-update";
 		} else {
-			System.out.println("Else");
-			return "pet-add-update";
+			pet.setOwner(loginService.getCurrentOwner());
+
+			if (pet.getPetPhoto().length == 0) {
+				pet.setPetPhoto(null);
+			}
+
+			// Remove this line later
+			pet.setPetPhoto(null);
+
+			petService.addPet(pet);
+			return "redirect:/pets";
 		}
 
+	}
+
+	@RequestMapping(value = "/update/{petId}")
+	public String updatePet(@PathVariable int petId, Model model) {
+		model.addAttribute("petTypes", petTypeService.getAllPetTypes());
+		model.addAttribute("breeds", breedService.getAllBreeds());
+		model.addAttribute("pet", petService.getPetById(petId));
+		return "pet-add-update";
+	}
+
+	@RequestMapping(value = "/update/{petId}", method = RequestMethod.POST)
+	public String updatePetPost(@PathVariable int petId, @Valid Pet pet, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes, Model model) {
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("petTypes", petTypeService.getAllPetTypes());
+			model.addAttribute("breeds", breedService.getAllBreeds());
+			model.addAttribute("pet", petService.getPetById(petId));
+			return "pet-add-update";
+		} else {
+			pet.setPetId(petId);
+			pet.setOwner(loginService.getCurrentOwner());
+
+			if (pet.getPetPhoto().length == 0) {
+				pet.setPetPhoto(null);
+			}
+
+			// Remove this line later
+			pet.setPetPhoto(null);
+
+			petService.updatePet(pet);
+			redirectAttributes.addFlashAttribute("successMsg", "Updated Successfully!");
+			return "redirect:/pets/update/" + petId;
+		}
 	}
 
 	@RequestMapping(value = "/delete/{petId}")
@@ -76,5 +122,23 @@ public class PetController {
 		pet.setPetId(petId);
 		// petService.deletePet(pet);
 		return "redirect:" + request.getHeader("Referer");
+	}
+
+	@RequestMapping("/details/{petId}")
+	public String petDetails(@PathVariable int petId, Model model) {
+		model.addAttribute("pet", petService.getPetById(petId));
+		model.addAttribute("comments", commentService.getCommentsByPetId(petId));
+		return "pet-details";
+	}
+
+	@RequestMapping(value = "/details/{petId}", method = RequestMethod.POST)
+	public String petDetailsPost(@PathVariable int petId, Comment comment) {
+
+		comment.setOwner(loginService.getCurrentOwner());
+		comment.setPet(petService.getPetById(petId));
+
+		commentService.addComment(comment);
+
+		return "redirect:/pets/details/" + petId;
 	}
 }

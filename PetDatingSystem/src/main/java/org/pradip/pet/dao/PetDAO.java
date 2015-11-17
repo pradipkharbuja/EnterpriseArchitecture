@@ -14,6 +14,10 @@ public interface PetDAO {
 	public List<Pet> getMyPets(Owner owner);
 
 	public Pet getPetById(int petId);
-	
+
 	public void deletePet(Pet pet);
+
+	public void addPet(Pet pet);
+	
+	public void updatePet(Pet pet);
 }

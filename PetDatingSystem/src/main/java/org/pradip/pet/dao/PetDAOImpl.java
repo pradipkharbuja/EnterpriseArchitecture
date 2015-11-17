@@ -65,9 +65,21 @@ public class PetDAOImpl implements PetDAO {
 	}
 
 	@Override
-	public void deletePet(Pet pet) {		
+	public void deletePet(Pet pet) {
 		Session session = sessionFactory.getCurrentSession();
 		session.delete(pet);
+	}
+
+	@Override
+	public void addPet(Pet pet) {
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(pet);
+	}
+
+	@Override
+	public void updatePet(Pet pet) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(pet);
 	}
 
 }

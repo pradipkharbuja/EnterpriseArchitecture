@@ -48,7 +48,7 @@ a:active {
 	float: left;
 	margin-bottom: 20px;
 	margin-right: 20px;
-	width: 150px;
+	width: 160px;
 }
 
 .animal-image {
@@ -58,4 +58,45 @@ a:active {
 
 .city {
 	margin: 5px 0;
+}
+
+div.animal:nth-child(5n + 1) {
+	clear: both;
+}
+
+#contact-owner .animal, #pet-details .animal {
+	width: 250px;
+}
+
+#contact-owner .email-form, .comment-form {
+	float: left;
+}
+
+#contact-owner .subject, #contact-owner .message, #pet-details .comments
+	{
+	width: 300px;
+}
+
+#contact-owner .message {
+	height: 100px;
+}
+
+#pet-details .comments {
+	height: 70px;
+}
+
+#contact-owner table td {
+	height: 20px;
+}
+
+#comment-lists {
+	padding-top: 20px;
+}
+
+#comment-lists .user {
+	font-weight: bold;
+}
+
+#comment-lists .comment {
+	margin-bottom: 15px;
 }

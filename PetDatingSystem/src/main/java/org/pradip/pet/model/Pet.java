@@ -24,7 +24,7 @@ public class Pet {
 
 	@OneToOne
 	@JoinColumn(name = "breedId")
-	//@NotNull(message = "Please select the breed.")
+	@NotNull(message = "Please select the breed.")
 	private Breed breed;
 
 	@OneToOne

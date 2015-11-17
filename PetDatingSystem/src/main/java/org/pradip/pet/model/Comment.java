@@ -23,7 +23,7 @@ public class Comment {
 	private Date commentDate;
 
 	@OneToOne
-	@JoinColumn(name = "ownerId")
+	@JoinColumn(name = "commentedBy")
 	private Owner owner;
 
 	@OneToOne
