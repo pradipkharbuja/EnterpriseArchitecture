@@ -10,6 +10,10 @@
 	<bean id="HandlerMapping"
 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
 
+	<!-- For file uploading -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 	<context:component-scan base-package="org.pradip.pet.controller" />
 
 	<context:component-scan base-package="org.pradip.pet.webservice" />
@@ -76,5 +80,7 @@
 	<import resource="custom-beans.xml" />
 
 	<import resource="email-bean.xml" />
+
+	<import resource="internationalization-beans.xml" />
 
 </beans>

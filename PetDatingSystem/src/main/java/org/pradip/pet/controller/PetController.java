@@ -15,10 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -72,16 +75,13 @@ public class PetController {
 			pet.setOwner(loginService.getCurrentOwner());
 
 			if (pet.getPetPhoto().length == 0) {
+				System.out.println("Image is null");
 				pet.setPetPhoto(null);
 			}
-
-			// Remove this line later
-			pet.setPetPhoto(null);
 
 			petService.addPet(pet);
 			return "redirect:/pets";
 		}
-
 	}
 
 	@RequestMapping(value = "/update/{petId}")
@@ -108,9 +108,6 @@ public class PetController {
 				pet.setPetPhoto(null);
 			}
 
-			// Remove this line later
-			pet.setPetPhoto(null);
-
 			petService.updatePet(pet);
 			redirectAttributes.addFlashAttribute("successMsg", "Updated Successfully!");
 			return "redirect:/pets/update/" + petId;
@@ -120,7 +117,7 @@ public class PetController {
 	@RequestMapping(value = "/delete/{petId}")
 	public String deletePet(@PathVariable int petId, @ModelAttribute Pet pet, HttpServletRequest request) {
 		pet.setPetId(petId);
-		// petService.deletePet(pet);
+		petService.deletePet(pet);
 		return "redirect:" + request.getHeader("Referer");
 	}
 
@@ -140,5 +137,12 @@ public class PetController {
 		commentService.addComment(comment);
 
 		return "redirect:/pets/details/" + petId;
+	}
+
+	// This method is called before executing any controller method
+	@InitBinder
+	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+		// Convert multipart object to byte[]
+		binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
 	}
 }

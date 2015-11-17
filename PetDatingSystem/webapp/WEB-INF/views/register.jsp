@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,11 @@
 <link rel="stylesheet" href="resources/styles/style.css" />
 </head>
 <body>
-
+	<div class="language">
+		Language : <a href="register?language=en">English</a> | <a
+			href="register?language=ne_NP">नेपाली</a>
+	</div>
+	
 	<div id="registerForm">
 		<h1>New Pet Owners</h1>
 		<form:form commandName="owner" action="" method="post">

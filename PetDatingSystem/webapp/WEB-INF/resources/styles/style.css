@@ -26,6 +26,10 @@ a:active {
 	color: red;
 }
 
+div.language {
+	margin: 10px 0px 0px;
+}
+
 #loginForm, #registerForm {
 	margin: 50px auto;
 	width: 350px;

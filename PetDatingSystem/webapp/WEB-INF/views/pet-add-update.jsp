@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -5,7 +6,8 @@
 
 <div id="registerForm">
 	<h1>Add / Update My Pet</h1>
-	<form:form commandName="pet" action="" method="post">
+	<form:form commandName="pet" action="" method="post"
+		enctype="multipart/form-data">
 		<div class="success">${successMsg}</div>
 		<div class="error">
 			<form:errors path="*" />
