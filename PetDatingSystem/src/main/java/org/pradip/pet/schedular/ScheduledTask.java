@@ -9,7 +9,7 @@ public class ScheduledTask {
 	@Autowired
 	private ScheduledEmail scheduledEmail;
 
-	@Scheduled(cron = "0 36 22 * * *")
+	@Scheduled(cron = "0 48 17 * * *")
 	public void sendEmail() {
 		System.out.println("Start Scheduling...");
 		scheduledEmail.sendEmail();

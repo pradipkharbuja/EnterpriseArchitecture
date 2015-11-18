@@ -37,29 +37,7 @@
 	<!-- routing the resources folder, if path has resources redirect to WEB-INF/resources -->
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 
-	<!-- data source for database connection used by hibernate; this works as 
-		persistence.xml -->
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://localhost/db_pet?createDatabaseIfNotExist=true" />
-		<property name="username" value="root" />
-		<property name="password" value="" />
-	</bean>
-
-	<bean id="hibernateProperties"
-		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="properties">
-			<props>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-				<prop key="connection.pool.size">1</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
-			</props>
-		</property>
-	</bean>
+	<import resource="beans/mysql.xml" />
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -75,12 +53,12 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<import resource="aspects.xml" />
+	<import resource="beans/aspects.xml" />
 
-	<import resource="custom-beans.xml" />
+	<import resource="beans/custom-beans.xml" />
 
-	<import resource="email-bean.xml" />
+	<import resource="beans/email-bean.xml" />
 
-	<import resource="internationalization-beans.xml" />
+	<import resource="beans/internationalization-beans.xml" />
 
 </beans>

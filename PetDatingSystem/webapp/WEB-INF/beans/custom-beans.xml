@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+	<!-- DAO Beans -->
+	<bean id="ownerDAO" class="org.pradip.pet.dao.OwnerDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="petDAO" class="org.pradip.pet.dao.PetDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="petTypeDAO" class="org.pradip.pet.dao.PetTypeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="breedDAO" class="org.pradip.pet.dao.BreedDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="emailOwnerDAO" class="org.pradip.pet.dao.EmailOwnerDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="commentDAO" class="org.pradip.pet.dao.CommentDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- Service Beans -->
+	<bean id="ownerService" class="org.pradip.pet.service.OwnerServiceImpl">
+		<property name="ownerDAO" ref="ownerDAO" />
+	</bean>
+
+	<bean id="petService" class="org.pradip.pet.service.PetServiceImpl">
+		<property name="petDAO" ref="petDAO" />
+	</bean>
+
+	<bean id="petTypeService" class="org.pradip.pet.service.PetTypeServiceImpl" />
+
+	<bean id="breedService" class="org.pradip.pet.service.BreedServiceImpl" />
+
+	<bean id="loginService" class="org.pradip.pet.service.LoginServiceImpl" />
+
+	<bean id="emailOwnerService" class="org.pradip.pet.service.EmailOwnerServiceImpl" />
+
+	<bean id="emailService" class="org.pradip.pet.service.EmailServiceImpl" />
+
+	<bean id="commentService" class="org.pradip.pet.service.CommentServiceImpl" />
+
+	<!-- Scheduling -->
+	<context:component-scan base-package="org.pradip.pet.schedular" />
+
+	<bean id="scheduledTask" class="org.pradip.pet.schedular.ScheduledTask" />
+
+	<task:annotation-driven scheduler="mySchedular" />
+
+	<task:scheduler id="mySchedular" pool-size="10" />
+
+</beans>

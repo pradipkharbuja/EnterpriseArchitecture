@@ -24,11 +24,11 @@
 			<table>
 				<tr>
 					<td><spring:message code="username" text="User Name" />:</td>
-					<td><form:input path="userName" value="sandeep" /></td>
+					<td><form:input path="userName" /></td>
 				</tr>
 				<tr>
 					<td><spring:message code="password" text="Password" />:</td>
-					<td><form:password path="password" value="kharbuja" /></td>
+					<td><form:password path="password" /></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit"
